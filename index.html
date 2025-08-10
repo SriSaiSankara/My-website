@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Sai Sankara Construction - Modern Apartments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .project-filter.active {
+            background: #667eea;
+            color: white;
+        }
+        .gallery-filter.active {
+            background: #667eea;
+            color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-building text-3xl"></i>
+                    <h1 class="text-2xl font-bold">Sri Sai Sankara Construction</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#projects" class="hover:text-blue-200 transition">Projects</a>
+                    <a href="#gallery" class="hover:text-blue-200 transition">Gallery</a>
+                    <a href="#builder" class="hover:text-blue-200 transition">Meet Builder</a>
+                    <a href="#about" class="hover:text-blue-200 transition">About</a>
+                    <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-6">Building Dreams Into Reality</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Sri Sai Sankara construction with modern design, quality craftsmanship, and sustainable living solutions.</p>
+            <button onclick="scrollToProjects()" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">
+                View Our Projects
+            </button>
+        </div>
+    </section>
+
+    <!-- Project Filter -->
+    <section id="projects" class="py-16">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Projects</h3>
+            
+            <!-- Filter Buttons -->
+            <div class="flex justify-center mb-12 space-x-4 flex-wrap">
+                <button onclick="filterProjects('all')" class="project-filter active px-6 py-2 rounded-full border-2 border-blue-500 transition">
+                    All Projects
+                </button>
+                <button onclick="filterProjects('completed')" class="project-filter px-6 py-2 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                    Completed
+                </button>
+                <button onclick="filterProjects('progress')" class="project-filter px-6 py-2 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                    In Progress
+                </button>
+                <button onclick="filterProjects('upcoming')" class="project-filter px-6 py-2 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                    Upcoming
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                <!-- Completed Project 1 -->
+                <div class="project-card completed bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/sunriseElite.jpg" alt="SunriseElite" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Completed
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sunrise Elite</h4>
+                        <p class="text-gray-600 mb-4">Modern 2& 3BHK apartments with premium amenities and garden views</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹30-45 Lakhs</span>
+                            <span class="text-sm text-gray-500">25 Flats</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Near narayana school, Parvathipuram
+                        </div>
+                        <button onclick="showProjectDetails('sai-residency')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Completed Project 2 -->
+                <div class="project-card completed bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/sunriseLotus.jpg" alt="Sunrise Lotus" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Completed
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sunrise Lotus</h4>
+                        <p class="text-gray-600 mb-4">Luxury 3BHK apartments with rooftop amenities and parking</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹40-55 Lakhs</span>
+                            <span class="text-sm text-gray-500">10 Flats</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            SNM colony, Parvathipuram
+                        </div>
+                        <button onclick="showProjectDetails('sankara-heights')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                 <!-- Completed Project 3 -->
+                <div class="project-card completed bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/sunriseElite.jpg" alt="Sunrise appartment" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Completed
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sunrise Appartment</h4>
+                        <p class="text-gray-600 mb-4">Modern 2BHK apartments with premium amenities and garden views</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹30-35 Lakhs</span>
+                            <span class="text-sm text-gray-500">20 Flats</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Near narayana school, Parvathipuram
+                        </div>
+                        <button onclick="showProjectDetails('sai-residency')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- In Progress Project 1 -->
+                <div class="project-card progress bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Sumrise appartment" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            In Progress 
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sunrise appartment</h4>
+                        <p class="text-gray-600 mb-4">Premium villas with private gardens and modern architecture</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹30-35 L</span>
+                            <span class="text-sm text-gray-500">24 Villas</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Sarjapur Road, Bangalore
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                            <div class="bg-orange-500 h-2 rounded-full" style="width: 65%"></div>
+                        </div>
+                        <button onclick="showProjectDetails('sai-gardens')" class="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition">
+                            View Progress
+                        </button>
+                    </div>
+                </div>
+
+                <!-- In Progress Project 2 -->
+                <div class="project-card progress bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=300&fit=crop" alt="Sankara Square" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            In Progress
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sankara Square</h4>
+                        <p class="text-gray-600 mb-4">Commercial complex with retail spaces and office suites</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹25-45 Lakhs</span>
+                            <span class="text-sm text-gray-500">60 Units</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Parvathipuram
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                            <div class="bg-orange-500 h-2 rounded-full" style="width: 40%"></div>
+                        </div>
+                        <button onclick="showProjectDetails('sankara-square')" class="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition">
+                            View Progress
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upcoming Project 1 -->
+                <div class="project-card upcoming bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/img4.jpg" alt="Sunrise Towers" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Upcoming
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sunrise Towers</h4>
+                        <p class="text-gray-600 mb-4">High-rise apartments with panoramic city views and club house</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹30-40 Lakhs</span>
+                            <span class="text-sm text-gray-500">20 Flats</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            RTC complex back side, Parvathipuram 
+                        </div>
+                        <div class="text-sm text-gray-500 mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Launch: Q2 2025
+                        </div>
+                        <button onclick="showProjectDetails('sai-towers')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                            Register Interest
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upcoming Project 2 -->
+                <div class="project-card upcoming bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Sankara Eco Homes" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Upcoming
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">Sankara Eco Homes</h4>
+                        <p class="text-gray-600 mb-4">Sustainable living with solar panels and rainwater harvesting</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-600 font-semibold">₹40-70 Lakhs</span>
+                            <span class="text-sm text-gray-500">150 Units</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Belagam, Parvathipuram 
+                        </div>
+                        <div class="text-sm text-gray-500 mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Launch: Q3 2024
+                        </div>
+                        <button onclick="showProjectDetails('sankara-eco')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                            Register Interest
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Project Gallery</h3>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Explore our stunning 2BHK and 3BHK apartment layouts with 3D visualizations and completed project photos
+            </p>
+            
+            <!-- Gallery Filter -->
+            <div class="flex justify-center mb-12 space-x-4 flex-wrap">
+                <button onclick="filterGallery('all')" class="gallery-filter active px-6 py-2 rounded-full border-2 border-blue-500 transition">
+                    All Images
+                </button>
+                <button onclick="filterGallery('3d-layouts')" class="gallery-filter px-6 py-2 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                    3D Layouts
+                </button>
+                <button onclick="filterGallery('completed')" class="gallery-filter px-6 py-2 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                    Completed Projects
+                </button>
+                <button onclick="filterGallery('interiors')" class="gallery-filter px-6 py-2 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                    Interior Designs
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+                <!-- 3D Layout Images -->
+                <div class="gallery-item 3d-layouts bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop', '2BHK Modern Layout - 3D View')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" alt="2BHK 3D Layout" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            3D Layout
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">2BHK Modern Layout</h4>
+                            <p class="text-sm opacity-90">850 sq ft</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item 3d-layouts bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop', '3BHK Premium Layout - 3D View')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop" alt="3BHK 3D Layout" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            3D Layout
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">3BHK Premium Layout</h4>
+                            <p class="text-sm opacity-90">1200 sq ft</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item 3d-layouts bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop', '2BHK Compact Layout - 3D View')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" alt="2BHK Compact 3D Layout" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            3D Layout
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">2BHK Compact Layout</h4>
+                            <p class="text-sm opacity-90">750 sq ft</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Project Images -->
+                <div class="gallery-item completed bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop', 'Sai Residency - Exterior View')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop" alt="Sai Residency Exterior" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Completed
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">Sai Residency</h4>
+                            <p class="text-sm opacity-90">Belagam, Parvathipuram</p>
+                     </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item completed bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop', 'Sankara Heights - Building Complex')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop" alt="Sankara Heights" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Completed
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">Sankara Heights</h4>
+                            <p class="text-sm opacity-90">SNM colony, Parvathipuram</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item completed bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop', 'Sai Gardens - Villa Construction')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Sai Gardens Construction" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            In Progress
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">Sai Gardens</h4>
+                            <p class="text-sm opacity-90">Rayagada Road, Parvathipuram</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interior Design Images -->
+                <div class="gallery-item interiors bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop', 'Modern Living Room Design')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" alt="Living Room Interior" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Interior
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">Modern Living Room</h4>
+                            <p class="text-sm opacity-90">Contemporary Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item interiors bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop', 'Premium Kitchen Design')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop" alt="Kitchen Interior" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Interior
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">Premium Kitchen</h4>
+                            <p class="text-sm opacity-90">Modular Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item interiors bg-white rounded-lg shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop', 'Master Bedroom Design')">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" alt="Bedroom Interior" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            Interior
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h4 class="font-bold">Master Bedroom</h4>
+                            <p class="text-sm opacity-90">Elegant Design</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-12">
+                <button onclick="loadMoreGallery()" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+                    <i class="fas fa-images mr-2"></i>View More Images
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Builder Section -->
+    <section id="builder" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Meet Our Builder</h3>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg p-8 text-white text-center">
+                    <div class="w-32 h-32 bg-white rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-lg">
+                        <img src="images/builderPhoto.jpg" alt="Mr. Arun kumar" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-2xl font-bold mb-2">Mr. Arun kumar</h4>
+                    <p class="text-blue-100 mb-4">Founder & Managing Director</p>
+                    <div class="space-y-2 text-sm">
+                        <p><i class="fas fa-graduation-cap mr-2"></i>B.E Civil Engineering</p>
+                        <p><i class="fas fa-award mr-2"></i>5+ Years Experience</p>
+                        <p><i class="fas fa-certificate mr-2"></i>Licensed Contractor</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">Building Trust, One Home at a Time</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        "At Sri Sai Sankara Construction, we don't just build houses - we create homes where families make memories. With over 5 years in the construction industry, I've personally overseen every project to ensure the highest quality standards."
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "Our commitment to transparency, quality materials, and timely delivery has helped us build lasting relationships with over 100 happy families across Parvathipuram."
+                    </p>
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h5 class="font-bold text-gray-800 mb-3">Personal Commitment:</h5>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fas fa-handshake text-blue-600 mr-2"></i>Personal site visits for every project</li>
+                            <li><i class="fas fa-phone text-blue-600 mr-2"></i>Direct access for all customer queries</li>
+                            <li><i class="fas fa-shield-alt text-blue-600 mr-2"></i>5-year structural warranty guarantee</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-4">
+                        <button onclick="scheduleBuilderMeeting()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+                            <i class="fas fa-calendar-alt mr-2"></i>Schedule Meeting
+                        </button>
+                        <button onclick="callBuilder()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold">
+                            <i class="fas fa-phone mr-2"></i>Call Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-bold mb-6 text-gray-800">About Sri Sai Sankara Construction</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        With over 5 years of experience in the construction industry, Sri Sai Sankara Construction has been a trusted name in delivering quality residential and commercial projects across Parvathipuram.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        We specialize in modern architecture, sustainable building practices, and creating spaces that enhance the quality of life for our residents.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
+                            <div class="text-gray-600">Happy Families</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">15+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">25+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">100%</div>
+                            <div class="text-gray-600">On-Time Delivery</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg p-8 text-white">
+                    <h4 class="text-2xl font-bold mb-6">Why Choose Us?</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                            <span>Quality construction with premium materials</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                            <span>Transparent pricing with no hidden costs</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                            <span>On-time project delivery guarantee</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                            <span>24/7 customer support and maintenance</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                            <span>Eco-friendly and sustainable practices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-12">Get In Touch</h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-2xl font-bold mb-6">Contact Information</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-map-marker-alt text-2xl"></i>
+                            <div>
+                                <div class="font-semibold">Head Office</div>
+                                <div>Sri Sai Sankara Construction, Parvathipuram - 535501</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-phone text-2xl"></i>
+                            <div>
+                                <div class="font-semibold">Phone</div>
+                      <a href="tel:+918076024100" class="text-blue-200 hover:text-white transition"> +91 8076024164</a>
+
+
+          
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-envelope text-2xl"></i>
+                            <div>
+                                <div class="font-semibold">Email</div>
+                                <a href="mailto:info@srisaisankara.com" class="text-blue-200 hover:text-white transition">info@srisaisankar59@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-clock text-2xl"></i>
+                            <div>
+                                <div class="font-semibold">Office Hours</div>
+                                <div>Mon - Sat: 9:00 AM - 7:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-8">
+                    <h4 class="text-2xl font-bold mb-6">Get In Touch</h4>
+                    
+                    <!-- Quick Contact Buttons -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <button onclick="callBuilder()" class="bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg transition font-semibold">
+                            <i class="fas fa-phone mr-2"></i>Call Now
+                        </button>
+                        <button onclick="whatsappBuilder()" class="bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg transition font-semibold">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <p class="text-white text-opacity-80">Or send us a detailed message:</p>
+                    </div>
+                    
+                    <form onsubmit="submitContactForm(event)" class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30 focus:outline-none focus:border-opacity-60">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30 focus:outline-none focus:border-opacity-60">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Your Phone" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30 focus:outline-none focus:border-opacity-60">
+                        </div>
+                        <div>
+                            <select required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-opacity-60">
+                                <option value="" class="text-gray-800">Select Interest</option>
+                                <option value="buy-apartment" class="text-gray-800">Buy Apartment</option>
+                                <option value="buy-villa" class="text-gray-800">Buy Villa</option>
+                                <option value="commercial-space" class="text-gray-800">Commercial Space</option>
+                                <option value="site-visit" class="text-gray-800">Schedule Site Visit</option>
+                                <option value="meet-builder" class="text-gray-800">Meet Builder</option>
+                                <option value="other" class="text-gray-800">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30 focus:outline-none focus:border-opacity-60 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-building text-2xl"></i>
+                        <h4 class="text-xl font-bold">Sri Sai Sankara Construction</h4>
+                    </div>
+                    <p class="text-gray-400">Building dreams into reality with quality construction and modern design.</p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Quick Links</h5>
+                    <div class="space-y-2">
+                        <a href="#projects" class="block text-gray-400 hover:text-white transition">Projects</a>
+                        <a href="#about" class="block text-gray-400 hover:text-white transition">About Us</a>
+                        <a href="#contact" class="block text-gray-400 hover:text-white transition">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Follow Us</h5>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/srisaisankaraconstruction" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/srisaisankara" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/srisaisankaraconstruction" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/srisaisankaraconstruction" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Sri Sai Sankara Construction. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="modal">
+        <div class="relative max-w-4xl mx-4">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="lightboxImage" src="" alt="" class="w-full h-auto rounded-lg">
+            <div id="lightboxCaption" class="text-white text-center mt-4 text-lg font-semibold"></div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="modal">
+        <div class="bg-white rounded-lg max-w-2xl mx-4 max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-800"></h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modalContent" class="text-gray-600">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll to projects
+        function scrollToProjects() {
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Project filtering
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.project-filter');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Project details data
+        const projectDetails = {
+            'sai-residency': {
+                title: 'Sai Residency',
+                content: `
+                    <div class="space-y-4">
+                        <p><strong>Status:</strong> Completed</p>
+                        <p><strong>Location:</strong> Whitefield, Bangalore</p>
+                        <p><strong>Price Range:</strong> ₹45-65 Lakhs</p>
+                        <p><strong>Units:</strong> 120 Apartments</p>
+                        <p><strong>Configuration:</strong> 3BHK</p>
+                        <p><strong>Amenities:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Swimming Pool</li>
+                            <li>Gymnasium</li>
+                            <li>Children's Play Area</li>
+                            <li>Landscaped Gardens</li>
+                            <li>24/7 Security</li>
+                            <li>Power Backup</li>
+                        </ul>
+                        <p class="mt-4">Modern 3BHK apartments designed for comfortable family living with premium amenities and beautiful garden views.</p>
+                    </div>
+                `
+            },
+            'sankara-heights': {
+                title: 'Sankara Heights',
+                content: `
+                    <div class="space-y-4">
+                        <p><strong>Status:</strong> Completed</p>
+                        <p><strong>Location:</strong> Electronic City, Bangalore</p>
+                        <p><strong>Price Range:</strong> ₹35-55 Lakhs</p>
+                        <p><strong>Units:</strong> 80 Apartments</p>
+                        <p><strong>Configuration:</strong> 2BHK & 3BHK</p>
+                        <p><strong>Amenities:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Rooftop Garden</li>
+                            <li>Covered Parking</li>
+                            <li>Intercom Facility</li>
+                            <li>Rainwater Harvesting</li>
+                            <li>Solar Water Heating</li>
+                            <li>Waste Management</li>
+                        </ul>
+                        <p class="mt-4">Luxury apartments with rooftop amenities and eco-friendly features in the heart of Electronic City.</p>
+                    </div>
+                `
+            },
+            'sai-gardens': {
+                title: 'Sai Gardens',
+                content: `
+                    <div class="space-y-4">
+                        <p><strong>Status:</strong> In Progress (65% Complete)</p>
+                        <p><strong>Location:</strong> Sarjapur Road, Bangalore</p>
+                        <p><strong>Price Range:</strong> ₹85 Lakhs - 1.2 Cr</p>
+                        <p><strong>Units:</strong> 24 Premium Villas</p>
+                        <p><strong>Configuration:</strong> 3BHK & 4BHK Villas</p>
+                        <p><strong>Expected Completion:</strong> December 2024</p>
+                        <p><strong>Features:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Private Gardens</li>
+                            <li>Modern Architecture</li>
+                            <li>Gated Community</li>
+                            <li>Club House</li>
+                            <li>Swimming Pool</li>
+                            <li>Tennis Court</li>
+                        </ul>
+                        <p class="mt-4">Premium villas with private gardens and modern architecture in a gated community setting.</p>
+                    </div>
+                `
+            },
+            'sankara-square': {
+                title: 'Sankara Square',
+                content: `
+                    <div class="space-y-4">
+                        <p><strong>Status:</strong> In Progress (40% Complete)</p>
+                        <p><strong>Location:</strong> HSR Layout, Bangalore</p>
+                        <p><strong>Price Range:</strong> ₹25-45 Lakhs</p>
+                        <p><strong>Units:</strong> 60 Commercial Spaces</p>
+                        <p><strong>Configuration:</strong> Retail & Office Spaces</p>
+                        <p><strong>Expected Completion:</strong> March 2025</p>
+                        <p><strong>Features:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Ground Floor Retail</li>
+                            <li>Upper Floor Offices</li>
+                            <li>Ample Parking</li>
+                            <li>Modern Elevators</li>
+                            <li>Central Air Conditioning</li>
+                            <li>High-Speed Internet</li>
+                        </ul>
+                        <p class="mt-4">Commercial complex with retail spaces and office suites in the prime HSR Layout area.</p>
+                    </div>
+                `
+            },
+            'sai-towers': {
+                title: 'Sai Towers',
+                content: `
+                    <div class="space-y-4">
+                        <p><strong>Status:</strong> Upcoming Launch</p>
+                        <p><strong>Location:</strong> Marathahalli, Bangalore</p>
+                        <p><strong>Price Range:</strong> ₹55-85 Lakhs</p>
+                        <p><strong>Units:</strong> 200 Apartments</p>
+                        <p><strong>Configuration:</strong> 2BHK & 3BHK</p>
+                        <p><strong>Launch Date:</strong> Q2 2024</p>
+                        <p><strong>Planned Amenities:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Panoramic City Views</li>
+                            <li>Multi-level Club House</li>
+                            <li>Infinity Pool</li>
+                            <li>Sky Lounge</li>
+                            <li>Fitness Center</li>
+                            <li>Concierge Services</li>
+                        </ul>
+                        <p class="mt-4">High-rise apartments with panoramic city views and premium club house facilities.</p>
+                        <button onclick="registerInterest('sai-towers')" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                            Register Interest
+                        </button>
+                    </div>
+                `
+            },
+            'sankara-eco': {
+                title: 'Sankara Eco Homes',
+                content: `
+                    <div class="space-y-4">
+                        <p><strong>Status:</strong> Upcoming Launch</p>
+                        <p><strong>Location:</strong> Kengeri, Bangalore</p>
+                        <p><strong>Price Range:</strong> ₹40-70 Lakhs</p>
+                        <p><strong>Units:</strong> 150 Apartments</p>
+                        <p><strong>Configuration:</strong> 2BHK & 3BHK</p>
+                        <p><strong>Launch Date:</strong> Q3 2024</p>
+                        <p><strong>Eco Features:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Solar Panel Installation</li>
+                            <li>Rainwater Harvesting</li>
+                            <li>Organic Waste Management</li>
+                            <li>Energy Efficient Lighting</li>
+                            <li>Green Building Certification</li>
+                            <li>Electric Vehicle Charging</li>
+                        </ul>
+                        <p class="mt-4">Sustainable living apartments with solar panels, rainwater harvesting, and eco-friendly features.</p>
+                        <button onclick="registerInterest('sankara-eco')" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                            Register Interest
+                        </button>
+                    </div>
+                `
+            }
+        };
+
+        // Show project details
+        function showProjectDetails(projectId) {
+            const modal = document.getElementById('projectModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            const project = projectDetails[projectId];
+            if (project) {
+                title.textContent = project.title;
+                content.innerHTML = project.content;
+                modal.classList.add('show');
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('show');
+        }
+
+        // Register interest
+        function registerInterest(projectId) {
+            alert('Thank you for your interest! Our team will contact you within 24 hours with more details about ' + projectDetails[projectId].title + '.');
+        }
+
+        // Builder contact functions
+        function scheduleBuilderMeeting() {
+            const message = "Hello! I would like to schedule a meeting with Mr. Arun kumar to discuss your construction projects. Please let me know your available time slots.";
+            const phoneNumber = "9180760 24164";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function callBuilder() {
+            window.location.href = 'tel:+9180760 24164';
+        }
+
+        function whatsappBuilder() {
+            const message = "Hello! I'm interested in Sri Sai Sankara Construction projects. Could you please share more details?";
+            const phoneNumber = "9180760 24164";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact form submission
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const name = event.target.querySelector('input[type="text"]').value;
+            const email = event.target.querySelector('input[type="email"]').value;
+            const phone = event.target.querySelector('input[type="tel"]').value;
+            const interest = event.target.querySelector('select').value;
+            const message = event.target.querySelector('textarea').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `*New Inquiry from Website*
+
+*Name:* ${name}
+*Email:* ${email}
+*Phone:* ${phone}
+*Interest:* ${interest.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+
+*Message:*
+${message}
+
+---
+Sent from Sri Sai Sankara Construction website`;
+            
+            // WhatsApp redirect
+            const phoneNumber = "9180760 24164";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show confirmation and reset form
+            alert('Redirecting to WhatsApp! Your message details have been pre-filled. Just click send in WhatsApp to reach us directly.');
+            event.target.reset();
+        }
+
+        // Gallery filtering
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-filter');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 100);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Lightbox functionality
+        function openLightbox(imageSrc, caption) {
+            const modal = document.getElementById('lightboxModal');
+            const image = document.getElementById('lightboxImage');
+            const captionElement = document.getElementById('lightboxCaption');
+            
+            image.src = imageSrc;
+            captionElement.textContent = caption;
+            modal.classList.add('show');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.remove('show');
+        }
+
+        // Load more gallery images
+        function loadMoreGallery() {
+            alert('More gallery images will be added soon! Contact us to see additional project photos and 3D layouts.');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close lightbox when clicking outside
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c8d215648b7f74',t:'MTc1NDc1ODk0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
